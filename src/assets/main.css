@@ -1,5 +1,19 @@
 @import './base.css';
 
+@font-face {
+  font-family: "Archivo SemiExpanded";
+  src: url('Archivo_SemiExpanded-BlackItalic.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url('Outfit-VariableFont_wght.ttf')  format('truetype');
+}
+
+html {
+  background-color: #171719;
+}
+
 body {
   display: flex;
   place-items: center;
