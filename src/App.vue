@@ -4,18 +4,18 @@ import Header from "@/components/Header.vue";
 </script>
 
 <template>
-  <Header></Header>
-  <div class="border-gradient p-4">
-    <div class="bg-phind-gray-accent p-4">
-      <Input class="bg-phind-gray-accent"></Input>
+  <Header class="mb-6"></Header>
+  <div class="border-gradient">
+    <div class="bg-phind-gray-accent m-2">
+      <Input></Input>
     </div>
   </div>
 </template>
 
 <style scoped>
 .border-gradient {
-  background: linear-gradient(#171719, #171719) padding-box,
-  linear-gradient(to right, #1c317e, #f2b299) border-box;
+  background: linear-gradient(#2A2A2D, #2A2A2D) padding-box,
+  linear-gradient(to right, #f2b299, #1c317e) border-box;
   border-radius: 12px;
   border: 3px solid transparent;
 }
