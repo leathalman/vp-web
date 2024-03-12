@@ -5,10 +5,9 @@ import Header from "@/components/Header.vue";
 
 <template>
   <Header class="mb-6"></Header>
+
   <div class="border-gradient">
-    <div class="bg-phind-gray-accent m-2">
-      <Input></Input>
-    </div>
+      <Input class="m-3"></Input>
   </div>
 </template>
 

@@ -12,7 +12,9 @@ const { textarea, input } = useTextareaAutosize()
         v-model="input"
         placeholder="I would love to hear your thoughts. What can I do to help?"
     />
-    <div class="mt-4">This is the bar with icons and stuff...</div>
+    <div class="flex flex-row mt-4 place-self-end">
+      <button id="user_input" @click="console.log('hello')">Submit</button>
+    </div>
 
   </div>
 </template>
@@ -41,5 +43,12 @@ textarea::placeholder {
 
 textarea::-webkit-scrollbar {
   display: none;
+}
+
+button {
+  color: #BEC1C5;
+  background-color: #171719;
+  border-radius: 8px;
+  padding: 0.35rem 1rem;
 }
 </style>
