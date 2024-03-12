@@ -13,6 +13,7 @@ body {
   place-items: center;
   width: 100%;
   min-height: 100vh;
-  background: rgb(28,49,126);
-  background: linear-gradient(155deg, rgba(28,49,126,1) 25%, rgba(242,178,153,1) 100%);
+  background-image: url('./layered-waves-haikei.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }

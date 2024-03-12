@@ -4,10 +4,12 @@
 
 <template>
   <div class="flex flex-col m-3">
-    <h1 class="text-4xl text-center font-semibold">What can SGA do for you?</h1>
+    <h1 class="text-4xl text-center font-semibold">Leath4VP</h1>
   </div>
 </template>
 
 <style scoped>
-
+* {
+  font-family: "Archivo SemiExpanded",serif;
+}
 </style>
