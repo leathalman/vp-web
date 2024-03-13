@@ -1,10 +1,12 @@
 <script setup>
 import Input from "@/components/Input.vue";
 import Header from "@/components/Header.vue";
+import SubHeader from "@/components/SubHeader.vue";
 </script>
 
 <template>
-  <Header class="mb-6"></Header>
+  <Header class=""></Header>
+  <SubHeader class="mb-8"></SubHeader>
 
   <div class="border-gradient">
       <Input class="m-3"></Input>

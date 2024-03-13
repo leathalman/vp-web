@@ -1,8 +1,13 @@
 @import './base.css';
 
 @font-face {
-  font-family: "Archivo SemiExpanded";
+  font-family: "Archivo SemiExpanded Italic";
   src: url('Archivo_SemiExpanded-BlackItalic.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: "Archivo SemiExpanded Light";
+  src: url('Archivo_SemiExpanded-Light.ttf')  format('truetype');
 }
 
 @font-face {
@@ -30,4 +35,10 @@ body {
   max-width: 1280px;
   margin: 0 auto 15rem;
   padding: 2rem;
+}
+
+@media(max-width: 700px) {
+  #app {
+    width: 80%;
+  }
 }
