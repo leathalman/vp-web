@@ -24,7 +24,7 @@ const { textarea, input } = useTextareaAutosize()
 textarea {
   -ms-overflow-style: none;
   scrollbar-width: none;
-  max-height: 300px;
+  max-height: 250px;
   background-color: transparent;
   color: #BEC1C5;
 
