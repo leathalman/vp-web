@@ -2,6 +2,14 @@
 import { useTextareaAutosize } from '@vueuse/core'
 
 const { textarea, input } = useTextareaAutosize()
+
+function checkForNewline() {
+  if (this.input.includes("\n")) {
+    // call Firebase here and save data
+    this.input = ""
+  }
+}
+
 </script>
 
 <template>
@@ -11,9 +19,10 @@ const { textarea, input } = useTextareaAutosize()
         ref="textarea"
         v-model="input"
         placeholder="I would love to hear your thoughts. What can I do to help?"
+        @input="checkForNewline()"
     />
     <div class="flex flex-row mt-4 place-self-end">
-      <button id="user_input" @click="console.log('hello')">Submit</button>
+      <button id="user_input" @click="console.log('Submitted')">Submit</button>
     </div>
 
   </div>
