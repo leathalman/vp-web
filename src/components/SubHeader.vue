@@ -1,6 +1,4 @@
-<script setup>
-
-</script>
+<script setup></script>
 
 <template>
   <div class="flex flex-col m-3">
@@ -14,5 +12,4 @@
   font-size: 1rem;
   font-weight: 300;
 }
-
 </style>

@@ -1,30 +1,40 @@
 <script setup>
-import { ref } from 'vue'
-import { useTextareaAutosize } from '@vueuse/core'
-import { saveData } from '../firebase/firebase-manager.js'
-import { uuid } from 'vue-uuid';
+import { ref } from "vue";
+import { useTextareaAutosize } from "@vueuse/core";
+import { saveData } from "../firebase/firebase-manager.js";
+import { uuid } from "vue-uuid";
 
 const { textarea, input } = useTextareaAutosize();
-const name = ref("")
-const email = ref("")
+const name = ref("");
+const email = ref("");
 const session_uuid = uuid.v4();
 
 function checkNewline() {
-  if (input.value === "" || input.value === "\n" || input.value === undefined || input.value === null) {
-    console.log("Nothing to save.")
-    input.value = ""
+  if (
+    input.value === "" ||
+    input.value === "\n" ||
+    input.value === undefined ||
+    input.value === null
+  ) {
+    console.log("Nothing to save.");
+    input.value = "";
   } else {
     if (input.value.includes("\n")) {
-      saveData(formatData())
+      saveData(formatData());
     }
   }
 }
 
 function submitPressed() {
-  if (input.value === "" || input.value === "\n" || input.value === undefined || input.value === null) {
-    console.log("Nothing to save.")
+  if (
+    input.value === "" ||
+    input.value === "\n" ||
+    input.value === undefined ||
+    input.value === null
+  ) {
+    console.log("Nothing to save.");
   } else {
-    saveData(formatData())
+    saveData(formatData());
   }
 }
 
@@ -34,35 +44,48 @@ function formatData() {
     name: name.value,
     email: email.value,
     date: new Date().toLocaleString(),
-    session_uuid: session_uuid
-  }
-  resetFields()
-  return data
+    session_uuid: session_uuid,
+  };
+  resetFields();
+  return data;
 }
 
 function resetFields() {
-  input.value = ""
-  name.value = ""
-  email.value = ""
+  input.value = "";
+  name.value = "";
+  email.value = "";
 }
-
 </script>
 
 <template>
   <div class="flex flex-col">
     <textarea
-        class="resize-none user-input "
-        ref="textarea"
-        v-model="input"
-        placeholder="I would love to hear your thoughts."
-        @input="checkNewline"
+      class="resize-none user-input"
+      ref="textarea"
+      v-model="input"
+      placeholder="I would love to hear your thoughts."
+      @input="checkNewline"
     />
     <div class="flex flex-row mt-6 items-end">
       <div class="justify-self-start">
-        <input v-model="name" class="user-input" type="text" id="name" placeholder="Name (Optional)"></input>
-        <input v-model="email" class="user-input ml-7" type="text" id="email" placeholder="Email (Optional)"></input>
+        <input
+          v-model="name"
+          class="user-input"
+          type="text"
+          id="name"
+          placeholder="Name (Optional)"
+        />
+        <input
+          v-model="email"
+          class="user-input ml-7"
+          type="text"
+          id="email"
+          placeholder="Email (Optional)"
+        />
       </div>
-      <button class="ml-auto" id="user_input" @click="submitPressed">Submit</button>
+      <button class="ml-auto" id="user_input" @click="submitPressed">
+        Submit
+      </button>
     </div>
   </div>
 </template>
@@ -70,7 +93,7 @@ function resetFields() {
 <style scoped>
 .user-input {
   background-color: transparent;
-  color: #BEC1C5;
+  color: #bec1c5;
 
   border: none;
   overflow: auto;
@@ -88,7 +111,7 @@ textarea {
 }
 
 textarea::placeholder {
-  color: #BEC1C5;
+  color: #bec1c5;
 }
 
 textarea::-webkit-scrollbar {
@@ -96,7 +119,7 @@ textarea::-webkit-scrollbar {
 }
 
 button {
-  color: #BEC1C5;
+  color: #bec1c5;
   background-color: #171719;
   border-radius: 8px;
   padding: 0.35rem 1rem;
@@ -108,10 +131,10 @@ input {
 }
 
 input::placeholder {
-  color: #BEC1C5;
+  color: #bec1c5;
 }
 
-@media(max-width: 700px) {
+@media (max-width: 700px) {
   input {
     margin-left: 0;
     margin-top: 0.5rem;
