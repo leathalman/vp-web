@@ -9,6 +9,8 @@ const name = ref("");
 const email = ref("");
 const session_uuid = uuid.v4();
 
+const emit = defineEmits(["didSubmit"]);
+
 function checkNewline() {
   if (
     input.value === "" ||
@@ -21,6 +23,8 @@ function checkNewline() {
   } else {
     if (input.value.includes("\n")) {
       saveData(formatData());
+      resetFields();
+      emit("didSubmit", "true");
     }
   }
 }
@@ -35,19 +39,19 @@ function submitPressed() {
     console.log("Nothing to save.");
   } else {
     saveData(formatData());
+    resetFields();
+    emit("didSubmit", "true");
   }
 }
 
 function formatData() {
-  const data = {
+  return {
     input: input.value.replace("\n", ""),
     name: name.value,
     email: email.value,
     date: new Date().toLocaleString(),
     session_uuid: session_uuid,
   };
-  resetFields();
-  return data;
 }
 
 function resetFields() {
@@ -127,7 +131,7 @@ button {
 
 input {
   min-width: 100px;
-  width: 120px;
+  width: 140px;
 }
 
 input::placeholder {
@@ -138,6 +142,7 @@ input::placeholder {
   input {
     margin-left: 0;
     margin-top: 0.5rem;
+    width: 120px;
   }
 
   textarea {
