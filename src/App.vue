@@ -8,7 +8,6 @@ import SubHeader from "@/components/SubHeader.vue";
 let shouldShowSuccess = ref(false);
 
 function submitTriggered(value) {
-  console.log(value);
   if (value) {
     shouldShowSuccess.value = true;
     setTimeout(resetSubmitTriggered, 10000);
@@ -35,16 +34,6 @@ function resetSubmitTriggered() {
 </template>
 
 <style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 1s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
 .border-gradient {
   background:
     linear-gradient(#2a2a2d, #2a2a2d) padding-box,
@@ -57,5 +46,15 @@ function resetSubmitTriggered() {
   font-family: "Outfit", serif;
   font-size: 1rem;
   font-weight: 300;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
