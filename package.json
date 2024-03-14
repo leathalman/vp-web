@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@vueuse/core": "^10.9.0",
-    "vue": "^3.4.21"
+    "firebase": "^10.8.1",
+    "vue": "^3.4.21",
+    "vue-uuid": "^3.0.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",

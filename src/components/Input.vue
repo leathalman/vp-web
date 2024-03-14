@@ -1,30 +1,49 @@
 <script setup>
+import { ref } from 'vue'
 import { useTextareaAutosize } from '@vueuse/core'
+import { saveData } from '../firebase/firebase-manager.js'
+import { uuid } from 'vue-uuid';
 
 const { textarea, input } = useTextareaAutosize();
+const name = ref("")
+const email = ref("")
+const session_uuid = uuid.v4();
 
-function checkForNewline() {
-  if (this.input.includes("\n")) {
-    // call Firebase here and save data
-    const data = this.input;
-    this.input = "";
-    saveData(data);
+function checkNewline() {
+  if (input.value === "" || input.value === "\n" || input.value === undefined || input.value === null) {
+    console.log("Nothing to save.")
+    input.value = ""
+  } else {
+    if (input.value.includes("\n")) {
+      saveData(formatData())
+    }
   }
 }
 
 function submitPressed() {
-  const data = this.input;
-  this.input = "";
-  saveData(data);
-}
-
-function saveData(data) {
-  if (data === "" || data === "\n" || data === undefined || data === null) {
+  if (input.value === "" || input.value === "\n" || input.value === undefined || input.value === null) {
     console.log("Nothing to save.")
   } else {
-    // save to Firebase here
-    console.log(data);
+    saveData(formatData())
   }
+}
+
+function formatData() {
+  const data = {
+    input: input.value.replace("\n", ""),
+    name: name.value,
+    email: email.value,
+    date: new Date().toLocaleString(),
+    session_uuid: session_uuid
+  }
+  resetFields()
+  return data
+}
+
+function resetFields() {
+  input.value = ""
+  name.value = ""
+  email.value = ""
 }
 
 </script>
@@ -36,19 +55,18 @@ function saveData(data) {
         ref="textarea"
         v-model="input"
         placeholder="I would love to hear your thoughts."
-        @input="checkForNewline(input)"
+        @input="checkNewline"
     />
     <div class="flex flex-row mt-6 items-end">
       <div class="justify-self-start">
-        <input class="user-input" type="text" id="name" placeholder="Name (Optional)"></input>
-        <input class="user-input ml-7" type="text" id="email" placeholder="Email (Optional)"></input>
+        <input v-model="name" class="user-input" type="text" id="name" placeholder="Name (Optional)"></input>
+        <input v-model="email" class="user-input ml-7" type="text" id="email" placeholder="Email (Optional)"></input>
       </div>
-      <button class="ml-auto" id="user_input" @click="submitPressed()">Submit</button>
+      <button class="ml-auto" id="user_input" @click="submitPressed">Submit</button>
     </div>
   </div>
 </template>
 
-<!--Set some max-height for textarea, but this is a good proof of concept-->
 <style scoped>
 .user-input {
   background-color: transparent;
