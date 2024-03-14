@@ -26,12 +26,12 @@ const app = initializeApp(firebaseManager);
 const db = getFirestore(app);
 
 export async function saveData(data) {
-  // try {
-  //   await addDoc(collection(db, "suggestions"), data);
-  //   // console.log("Document written with ID: ", docRef.id); docRef = await addDoc...
-  // } catch (e) {
-  //   console.error("Error adding document: ", e);
-  // }
+  try {
+    await addDoc(collection(db, "suggestions"), data);
+    // console.log("Document written with ID: ", docRef.id); docRef = await addDoc...
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
 }
 
 // only used to test permissions settings
