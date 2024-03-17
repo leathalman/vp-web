@@ -67,7 +67,7 @@ function resetFields() {
       class="resize-none user-input"
       ref="textarea"
       v-model="input"
-      placeholder="I would love to hear your thoughts."
+      placeholder="Click here to start typing. I would love to hear your thoughts."
       @input="checkNewline"
     />
     <div class="flex flex-row mt-6 items-end">
